@@ -1,0 +1,16 @@
+{
+  "name": "sigillarium",
+  "private": true,
+  "version": "0.0.0",
+  "workspaces": [
+    "packages/*"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "npm -ws --if-present run build",
+    "test": "npm -ws --if-present test",
+    "lint": "npm -ws --if-present run lint"
+  }
+}
