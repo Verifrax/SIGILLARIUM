@@ -1,3 +1,6 @@
+export * from "./schema/v1.js";
+export * from "./util.js";
+
 export function seal(_bytes: Uint8Array): Uint8Array {
   throw new Error("NOT_IMPLEMENTED");
 }
