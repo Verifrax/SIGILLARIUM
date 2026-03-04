@@ -9,9 +9,9 @@
     "node": ">=18"
   },
   "scripts": {
-    "build": "npm -ws --if-present run build",
-    "test": "npm -ws --if-present test",
-    "lint": "npm -ws --if-present run lint"
+    "build": "npm --workspaces --if-present run build",
+    "test": "npm --workspaces --if-present test",
+    "lint": "npm --workspaces --if-present run lint"
   },
   "devDependencies": {
     "@types/node": "^22.19.13",
