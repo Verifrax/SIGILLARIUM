@@ -11,6 +11,22 @@ export const BUNDLE_PATHS = Object.freeze({
   root: "SIGILLARIUM.json",
 });
 
+export const BUNDLE_REQUIRED = Object.freeze([
+  BUNDLE_PATHS.artifactOriginal,
+  BUNDLE_PATHS.artifactSha256,
+  BUNDLE_PATHS.manifest,
+  BUNDLE_PATHS.verifyTxt,
+  BUNDLE_PATHS.root,
+]);
+
+export const BUNDLE_OPTIONAL = Object.freeze([
+  BUNDLE_PATHS.certificate,
+  BUNDLE_PATHS.proof,
+  BUNDLE_PATHS.receipt,
+]);
+
+
+
 export type Sha256Hex = string;
 
 export type SigillariumRoot = {
