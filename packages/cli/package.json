@@ -23,7 +23,9 @@
     "prepack": "npm run build",
     "postpack": "node scripts/postpack.mjs"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@sigillarium/core": "file:../core"
+  },
   "devDependencies": {
     "typescript": "^5.5.4"
   }
