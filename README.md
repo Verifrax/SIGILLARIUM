@@ -1,12 +1,22 @@
 # SIGILLARIUM
 
-Deterministic artifact sealing for the VERIFRAX stack.
+Deterministic universal artifact sealing protocol producing reproducible integrity bundles independent of identity, blockchain, or centralized services.
 
 ## Monorepo
 
-- `packages/core` → `@sigillarium/core`
-- `packages/cli`  → `sigillarium` CLI
+- `packages/core` → `@sigillarium/core` (engine)
+- `packages/cli`  → `sigillarium` (CLI)
 
-## Status
+## Bundle shape (target)
 
-Phase 1/10: Core Release (in progress)
+```text
+bundle.zip
+ ├ artifact/original
+ ├ artifact/sha256.txt
+ ├ manifest/manifest.json
+ ├ certificate/certificate.json
+ ├ proof/proof.json
+ ├ receipt/receipt.json
+ ├ verify/VERIFY.txt
+ └ SIGILLARIUM.json
+
