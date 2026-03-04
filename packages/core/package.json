@@ -19,7 +19,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "node -e \"console.log(\\\"core:test:placeholder\\\")\""
+    "test": "node test/manifest.mjs"
   },
   "devDependencies": {
     "typescript": "^5.5.4"
