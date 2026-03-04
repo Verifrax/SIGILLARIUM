@@ -1,0 +1,19 @@
+name: Identity
+on:
+  pull_request:
+  push:
+jobs:
+  identity:
+    name: Identity
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Identity invariants
+        shell: bash
+        run: |
+          set -euo pipefail
+          if git grep -nE "(private_key|BEGIN (RSA|EC|OPENSSH) PRIVATE KEY|seed phrase|mnemonic)" -- .; then
+            echo "FAIL: found secret-like material"
+            exit 1
+          fi
+          echo "OK"
