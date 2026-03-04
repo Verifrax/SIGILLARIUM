@@ -1,6 +1,6 @@
-declare module "./vendor/core/dist/index.js" {
-  export function seal(inputPath: string, opts?: any): Promise<any> | any;
-  export function verify(bundlePath: string, opts?: any): Promise<any> | any;
-  export function inspect(bundlePath: string, opts?: any): Promise<any> | any;
-  export function manifest(inputPath: string, opts?: any): Promise<any> | any;
+declare module "@sigillarium/core" {
+  export const seal: (...args: any[]) => any;
+  export const verify: (...args: any[]) => any;
+  export const inspect: (...args: any[]) => any;
+  export const manifest: (...args: any[]) => any;
 }
