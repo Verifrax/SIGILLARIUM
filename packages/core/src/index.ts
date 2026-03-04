@@ -11,3 +11,4 @@ export function verify(_bundle: Uint8Array): boolean {
 export function inspect(_bundle: Uint8Array): Record<string, unknown> {
   throw new Error("NOT_IMPLEMENTED");
 }
+export * from "./zip.js";
