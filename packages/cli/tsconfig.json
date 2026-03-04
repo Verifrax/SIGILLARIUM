@@ -9,7 +9,13 @@
     "skipLibCheck": true,
     "types": [
       "node"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "./vendor/*": [
+        "../cli/vendor/*"
+      ]
+    }
   },
   "include": [
     "src"

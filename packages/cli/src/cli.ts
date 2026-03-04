@@ -1,7 +1,7 @@
 import * as fs from "node:fs";
 import { readFileSync, writeFileSync } from "node:fs";
 import { basename } from "node:path";
-import { seal, verify, inspect } from "@sigillarium/core";
+import { seal, verify, inspect } from "./vendor/core/dist/index.js";
 
 function die(msg: string, code = 1): never {
   process.stderr.write(String(msg) + "\n");
