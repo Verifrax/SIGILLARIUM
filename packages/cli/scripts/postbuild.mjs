@@ -14,3 +14,20 @@ if (!b.subarray(0, sh.length).equals(sh)) b = Buffer.concat([sh, b]);
 
 fs.writeFileSync(f, b);
 fs.chmodSync(f, 0o755);
+
+// SIGILLARIUM_REWRITE_CORE_IMPORT
+import { readFileSync, writeFileSync } from "node:fs";
+{
+  const f = "dist/cli.js";
+  let t = readFileSync(f, "utf8");
+  t = t.replace(/from\s+\"@sigillarium\/core\";/g, "from \"./vendor/core/dist/index.js\";");
+  writeFileSync(f, t);
+}
+
+// SIGILLARIUM_COPY_VENDOR_CORE
+import { mkdirSync } from "node:fs";
+import { execSync } from "node:child_process";
+{
+  mkdirSync("dist/vendor", { recursive: true });
+  execSync("rsync -a --delete ../core/dist/ dist/vendor/core/dist/", { stdio: "inherit" });
+}

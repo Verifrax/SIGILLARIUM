@@ -11,18 +11,19 @@
     "README.md",
     "LICENSE",
     "scripts",
-    "vendor/core"
+    "vendor/core",
+    "dist/**",
+    "scripts/**",
+    "package.json"
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "tsc -p tsconfig.json && node scripts/postbuild.mjs",
+    "build": "npx -y tsc -p tsconfig.json && node scripts/postbuild.mjs",
     "test": "node dist/cli.js --help >/dev/null 2>&1 || true",
     "prepack": "npm run build",
     "postpack": "node scripts/postpack.mjs"
   },
-  "dependencies": {
-    "@sigillarium/core": "file:vendor/core"
-  },
+  "dependencies": {},
   "devDependencies": {
     "typescript": "^5.5.4"
   }

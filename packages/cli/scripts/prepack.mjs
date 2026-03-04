@@ -34,3 +34,11 @@ if (!fs.existsSync(path.join(dst, "LICENSE"))) {
 }
 
 void KEEP_VENDOR;
+
+// SIGILLARIUM_VENDOR_CORE_PREPACK
+import { mkdirSync } from "node:fs";
+import { execSync } from "node:child_process";
+{
+  mkdirSync("dist/vendor", { recursive: true });
+  execSync("rsync -a --delete ../core/dist/ dist/vendor/core/dist/", { stdio: "inherit" });
+}
