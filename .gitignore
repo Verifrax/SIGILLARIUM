@@ -5,3 +5,21 @@ coverage/
 .env
 *.log
 *.tgz
+
+# SIGILLARIUM: allow tracked vendor snapshot for CLI packaging
+
+# SIGILLARIUM: re-include vendor snapshot for deterministic CLI packaging
+!packages/
+!packages/cli/
+
+# SIGILLARIUM: re-include CLI vendor snapshot (defeat root dist/ prune)
+!packages/cli/vendor/
+!packages/cli/vendor/**
+!packages/cli/vendor/**/*
+
+# SIGILLARIUM: force-track CLI vendor snapshot (defeat any prior vendor/dist ignores)
+!packages/
+!packages/cli/
+!packages/cli/vendor/
+!packages/cli/vendor/**
+!packages/cli/vendor/**/*
