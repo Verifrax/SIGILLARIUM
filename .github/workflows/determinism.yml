@@ -1,0 +1,28 @@
+name: Determinism Check
+on:
+  pull_request:
+  push:
+jobs:
+  determinism:
+    name: Determinism Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build --if-present
+      - name: Determinism smoke
+        shell: bash
+        run: |
+          set -euo pipefail
+          npm pack --silent > /tmp/pack1.txt
+          mv "$(cat /tmp/pack1.txt)" /tmp/pack1.tgz
+          npm pack --silent > /tmp/pack2.txt
+          mv "$(cat /tmp/pack2.txt)" /tmp/pack2.tgz
+          sha256sum /tmp/pack1.tgz /tmp/pack2.tgz
+          test "$(sha256sum /tmp/pack1.tgz | awk "{print \$1}")" = "$(sha256sum /tmp/pack2.tgz | awk "{print \$1}")"
