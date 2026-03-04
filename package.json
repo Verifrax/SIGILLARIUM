@@ -12,5 +12,9 @@
     "build": "npm -ws --if-present run build",
     "test": "npm -ws --if-present test",
     "lint": "npm -ws --if-present run lint"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.13",
+    "typescript": "^5.9.3"
   }
 }

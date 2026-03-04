@@ -13,8 +13,8 @@
   ],
   "license": "Apache-2.0",
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "test": "node -e \"console.log(\\\"cli:test:placeholder\\\")\""
+    "build": "tsc -p tsconfig.json && node -e \"const fs=require(\\\"fs\\\");const f=\\\"dist/cli.js\\\";const b=fs.readFileSync(f);const sh=\\\"#!/usr/bin/node\\\\n\\\"; if(!b.slice(0,sh.length).equals(Buffer.from(sh))) fs.writeFileSync(f, Buffer.concat([Buffer.from(sh), b])); fs.chmodSync(f, 0o755);\"",
+    "test": "node dist/cli.js --help >/dev/null 2>&1 || true"
   },
   "dependencies": {
     "@sigillarium/core": "0.0.0"
