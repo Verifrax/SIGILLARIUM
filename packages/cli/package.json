@@ -8,16 +8,20 @@
   },
   "files": [
     "dist",
+    "README.md",
     "LICENSE",
-    "README.md"
+    "scripts",
+    "vendor/core"
   ],
   "license": "Apache-2.0",
   "scripts": {
     "build": "tsc -p tsconfig.json && node scripts/postbuild.mjs",
-    "test": "node dist/cli.js --help >/dev/null 2>&1 || true"
+    "test": "node dist/cli.js --help >/dev/null 2>&1 || true",
+    "prepack": "npm run build",
+    "postpack": "node scripts/postpack.mjs"
   },
   "dependencies": {
-    "@sigillarium/core": "0.0.0"
+    "@sigillarium/core": "file:vendor/core"
   },
   "devDependencies": {
     "typescript": "^5.5.4"
