@@ -19,7 +19,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "node test/manifest.mjs",
+    "test": "node --trace-uncaught --trace-warnings test/manifest.mjs",
     "clean": "rm -rf dist",
     "vectors:run": "npm run build && node ./test/run-vectors.mjs"
   },
