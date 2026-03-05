@@ -19,11 +19,10 @@
   "license": "Apache-2.0",
   "scripts": {
     "build": "tsc -p tsconfig.json",
-    "test": "node test/manifest.mjs"
+    "test": "node test/manifest.mjs",
+    "clean": "rm -rf dist"
   },
-  "devDependencies": {
-    "typescript": "^5.5.4"
-  },
+  "devDependencies": {},
   "private": false,
   "repository": {
     "type": "git",
