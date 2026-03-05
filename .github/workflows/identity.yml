@@ -1,15 +1,10 @@
 name: Identity
+permissions:
+  contents: read
+  actions: read
+  pull-requests: read
 
 on:
   push:
-    branches: [main]
   pull_request:
-    branches: [main]
-  workflow_dispatch: {}
-
-env:
-  LC_ALL: C
-  TZ: UTC
-
-  identity:
     name: Identity
