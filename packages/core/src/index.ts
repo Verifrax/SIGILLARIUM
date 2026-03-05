@@ -1,4 +1,4 @@
-export * from "./schema/v1.js";
+export * from "./schema/v1";
 export * from "./util.js";
 export * from "./manifest.js";
 

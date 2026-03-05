@@ -1,4 +1,4 @@
-import { BUNDLE_REQUIRED } from "./schema/v1.js";
+import { BUNDLE_REQUIRED } from "./schema/v1";
 import { listZipEntries } from "./unzip.js";
 
 export function inspect(bundle: Uint8Array): Record<string, unknown> {
