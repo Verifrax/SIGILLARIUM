@@ -13,3 +13,7 @@ export function inspect(_bundle: Uint8Array): Record<string, unknown> {
 }
 export * from "./zip.js";
 export { SCHEMA_VERSION } from "./schema/v1"
+
+export { enforceDeterminismEnv } from "./determinism"
+
+export { stableStringify } from "./util"
