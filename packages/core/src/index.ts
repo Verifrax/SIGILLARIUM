@@ -1,4 +1,4 @@
-export * from "./schema/v1";
+export * from "./schema/v1.js";
 export * from "./util.js";
 export * from "./manifest.js";
 
@@ -12,7 +12,7 @@ export function inspect(_bundle: Uint8Array): Record<string, unknown> {
   throw new Error("NOT_IMPLEMENTED");
 }
 export * from "./zip.js";
-export { SCHEMA_VERSION } from "./schema/v1"
+export { SCHEMA_VERSION } from "./schema/v1.js"
 
 export { enforceDeterminismEnv } from "./determinism"
 

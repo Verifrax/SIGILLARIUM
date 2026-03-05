@@ -1,4 +1,4 @@
-import { BUNDLE_PATHS, BUNDLE_REQUIRED, type ManifestV1 } from "./schema/v1";
+import { BUNDLE_PATHS, BUNDLE_REQUIRED, type ManifestV1 } from "./schema/v1.js";
 import { sha256Hex } from "./util.js";
 import { extractZipEntry, listZipEntries } from "./unzip.js";
 

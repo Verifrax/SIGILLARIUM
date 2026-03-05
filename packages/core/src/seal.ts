@@ -1,4 +1,4 @@
-import { BUNDLE_PATHS, SIGILLARIUM_VERSION, type SigillariumRoot } from "./schema/v1";
+import { BUNDLE_PATHS, SIGILLARIUM_VERSION, type SigillariumRoot } from "./schema/v1.js";
 import { isoUtcNow, sha256Hex } from "./util.js";
 import { manifest as makeManifest } from "./manifest.js";
 import { zipDeterministic } from "./zip.js";
