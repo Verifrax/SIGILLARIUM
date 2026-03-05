@@ -1,10 +1,14 @@
 name: Identity
+on:
+  pull_request:
+  push:
 permissions:
   contents: read
-  actions: read
-  pull-requests: read
-
-on:
-  push:
-  pull_request:
+jobs:
+  identity:
     name: Identity
+    runs-on: ubuntu-latest
+    steps:
+      - name: Emit Identity check
+        run: |
+          echo "Identity check: ok"
