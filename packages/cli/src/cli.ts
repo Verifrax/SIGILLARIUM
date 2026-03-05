@@ -1,41 +1,53 @@
-import * as fs from "node:fs";
-import { readFileSync, writeFileSync } from "node:fs";
-import { basename } from "node:path";
-import { seal, verify, inspect } from "./vendor/core/dist/index.js";
+import { seal, verify, inspect } from "../vendor/core/dist/index.js";
 
-function die(msg: string, code = 1): never {
-  process.stderr.write(String(msg) + "\n");
+function usage(): void {
+  console.log(`sigillarium <command> [path]
+
+Commands:
+  seal <file>       seal an artifact into a deterministic bundle
+  verify <bundle>   verify a bundle offline
+  inspect <bundle>  print bundle metadata
+  help              show this help
+
+Flags:
+  -h, --help        show this help
+`);
+}
+
+function fail(msg: string, code: number): never {
+  console.error(msg);
   process.exit(code);
 }
 
-const args = process.argv.slice(2);
-const [cmd, path] = args;
+const argv = process.argv.slice(2);
+const hasHelp = argv.includes("--help") || argv.includes("-h");
+const filtered = argv.filter(a => a !== "--help" && a !== "-h");
 
-if (!cmd) die("usage: sigillarium <seal|verify|inspect> <path>", 2);
-if (!path) die("missing path", 2);
+const cmd = (filtered[0] || "help").toLowerCase();
+const pathArg = filtered[1] || "";
 
-if (cmd === "seal") {
-  const bytes = new Uint8Array(readFileSync(path));
-  const bundle = seal(bytes);
-  const out = path + ".sigillarium.zip";
-  if (fs.existsSync(out) && process.env.SIGILLARIUM_OVERWRITE !== "1") die("refuse overwrite (set SIGILLARIUM_OVERWRITE=1)", 12);
-  writeFileSync(out, Buffer.from(bundle));
-  process.stdout.write(out + "\n");
+if (hasHelp || cmd === "help") {
+  usage();
   process.exit(0);
 }
 
-if (cmd === "verify") {
-  const bundle = new Uint8Array(readFileSync(path));
-  const ok = verify(bundle);
-  process.stdout.write(ok ? "OK\n" : "FAIL\n");
-  process.exit(ok ? 0 : 11);
+if (!pathArg) fail("missing path", 2);
+
+async function main(): Promise<void> {
+  if (cmd === "seal") {
+    await seal(pathArg as any);
+    return;
+  }
+  if (cmd === "verify") {
+    await verify(pathArg as any);
+    return;
+  }
+  if (cmd === "inspect") {
+    await inspect(pathArg as any);
+    return;
+  }
+  usage();
+  process.exit(2);
 }
 
-if (cmd === "inspect") {
-  const bundle = new Uint8Array(readFileSync(path));
-  const r = inspect(bundle);
-  process.stdout.write(JSON.stringify({ file: basename(path), ...r }, null, 2) + "\n");
-  process.exit(0);
-}
-
-die("unknown command", 2);
+main().catch((e) => fail(String(e && (e.stack || e.message || e)), 1));
