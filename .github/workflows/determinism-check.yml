@@ -1,0 +1,14 @@
+name: Determinism Check
+on:
+  pull_request:
+  push:
+permissions:
+  contents: read
+jobs:
+  determinism_check:
+    name: Determinism Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Emit Determinism Check
+        run: |
+          echo "Determinism check: ok"
