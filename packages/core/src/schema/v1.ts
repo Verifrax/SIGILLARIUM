@@ -1,31 +1,35 @@
 /**
  * SIGILLARIUM BUNDLE SCHEMA v1 (FROZEN)
  */
-
 export const SCHEMA_VERSION = "v1" as const;
-export const SIGILLARIUM_VERSION = SCHEMA_VERSION;
+
+/**
+ * Protocol version exposed in manifests/roots for schema v1.
+ * Must remain `1` for v1 forever.
+ */
+export const SIGILLARIUM_VERSION = 1 as const;
 
 export const BUNDLE_PATHS = {
   manifest: "sigillarium.manifest.json",
-  artifactOriginal: "artifact/original.bin",
-  artifactSha256: "artifact/sha256.txt",
-  verifyTxt: "verify/verify.txt",
-  root: "root.json"
+  payload: "payload.zip",
+  artifactOriginal: "artifact.original",
+  artifactSha256: "artifact.sha256",
+  verifyTxt: "VERIFY.txt",
+  root: "sigillarium.root.json",
 } as const;
 
 export const BUNDLE_REQUIRED = [
   BUNDLE_PATHS.manifest,
-  BUNDLE_PATHS.artifactOriginal,
-  BUNDLE_PATHS.artifactSha256,
+  BUNDLE_PATHS.payload,
   BUNDLE_PATHS.verifyTxt,
-  BUNDLE_PATHS.root
+  BUNDLE_PATHS.root,
 ] as const;
 
 export type ManifestV1 = {
   sigillarium: "SIGILLARIUM";
   version: typeof SIGILLARIUM_VERSION;
   artifact: {
-    path: typeof BUNDLE_PATHS.artifactOriginal;
+    path: string;
     sha256: string;
     bytes: number;
   };
