@@ -12,3 +12,4 @@ export function inspect(_bundle: Uint8Array): Record<string, unknown> {
   throw new Error("NOT_IMPLEMENTED");
 }
 export * from "./zip.js";
+export { SCHEMA_VERSION } from "./schema/v1"
