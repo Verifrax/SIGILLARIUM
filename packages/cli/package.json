@@ -24,7 +24,5 @@
     "postpack": "node scripts/postpack.mjs"
   },
   "dependencies": {},
-  "devDependencies": {
-    "typescript": "^5.5.4"
-  }
+  "devDependencies": {}
 }
