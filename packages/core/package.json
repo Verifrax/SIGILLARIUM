@@ -20,7 +20,8 @@
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "node test/manifest.mjs",
-    "clean": "rm -rf dist"
+    "clean": "rm -rf dist",
+    "vectors:run": "npm run build && node ./test/run-vectors.mjs"
   },
   "devDependencies": {},
   "private": false,
