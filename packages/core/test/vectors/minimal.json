@@ -1,0 +1,6 @@
+{
+  "name": "minimal",
+  "files": {
+    "hello.txt": "hello"
+  }
+}
