@@ -1,0 +1,7 @@
+{
+  "name": "binary",
+  "files_base64": {
+    "bin/00.dat": "AAECAwQFBgcICQ==",
+    "bin/ff.dat": "/////////////////////w=="
+  }
+}

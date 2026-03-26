@@ -1,68 +1,43 @@
+/**
+ * SIGILLARIUM BUNDLE SCHEMA v1 (FROZEN)
+ */
+export const SCHEMA_VERSION = "v1" as const;
+
+/**
+ * Protocol version exposed in manifests/roots for schema v1.
+ * Must remain `1` for v1 forever.
+ */
 export const SIGILLARIUM_VERSION = 1 as const;
 
-export const BUNDLE_PATHS = Object.freeze({
-  artifactOriginal: "artifact/original",
-  artifactSha256: "artifact/sha256.txt",
-  manifest: "manifest/manifest.json",
-  certificate: "certificate/certificate.json",
-  proof: "proof/proof.json",
-  receipt: "receipt/receipt.json",
-  verifyTxt: "verify/VERIFY.txt",
-  root: "SIGILLARIUM.json",
-});
+export const BUNDLE_PATHS = {
+  manifest: "sigillarium.manifest.json",
+  payload: "payload.zip",
+  artifactOriginal: "artifact.original",
+  artifactSha256: "artifact.sha256",
+  verifyTxt: "VERIFY.txt",
+  root: "sigillarium.root.json",
+} as const;
 
-export const BUNDLE_REQUIRED = Object.freeze([
-  BUNDLE_PATHS.artifactOriginal,
-  BUNDLE_PATHS.artifactSha256,
+export const BUNDLE_REQUIRED = [
   BUNDLE_PATHS.manifest,
+  BUNDLE_PATHS.payload,
   BUNDLE_PATHS.verifyTxt,
   BUNDLE_PATHS.root,
-]);
-
-export const BUNDLE_OPTIONAL = Object.freeze([
-  BUNDLE_PATHS.certificate,
-  BUNDLE_PATHS.proof,
-  BUNDLE_PATHS.receipt,
-]);
-
-
-
-export type Sha256Hex = string;
-
-export type SigillariumRoot = {
-  sigillarium: "SIGILLARIUM";
-  version: typeof SIGILLARIUM_VERSION;
-  created_at: string; // ISO8601 UTC
-  bundle_sha256: Sha256Hex; // sha256 over canonical zip bytes (filled after build)
-};
+] as const;
 
 export type ManifestV1 = {
   sigillarium: "SIGILLARIUM";
   version: typeof SIGILLARIUM_VERSION;
   artifact: {
-    path: typeof BUNDLE_PATHS.artifactOriginal;
-    sha256: Sha256Hex;
+    path: string;
+    sha256: string;
     bytes: number;
   };
 };
 
-export type CertificateV1 = {
+export type SigillariumRoot = {
   sigillarium: "SIGILLARIUM";
   version: typeof SIGILLARIUM_VERSION;
-  algorithm: "sha256";
-  statement: "artifact sha256 matches manifest";
-};
-
-export type ProofV1 = {
-  sigillarium: "SIGILLARIUM";
-  version: typeof SIGILLARIUM_VERSION;
-  type: "deterministic";
-  method: "recompute+compare";
-};
-
-export type ReceiptV1 = {
-  sigillarium: "SIGILLARIUM";
-  version: typeof SIGILLARIUM_VERSION;
-  result: "SEALED";
-  artifact_sha256: Sha256Hex;
+  created_at: string;
+  bundle_sha256: string;
 };

@@ -12,3 +12,8 @@ export function inspect(_bundle: Uint8Array): Record<string, unknown> {
   throw new Error("NOT_IMPLEMENTED");
 }
 export * from "./zip.js";
+export { SCHEMA_VERSION } from "./schema/v1.js"
+
+export { enforceDeterminismEnv } from "./determinism"
+
+export { stableStringify } from "./util"
