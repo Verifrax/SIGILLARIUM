@@ -32,7 +32,26 @@ jobs:
         run: |
           set -euo pipefail
           cd packages/core
-          find dist -type f -print0 | LC_ALL=C sort -z | xargs -0 shasum -a 256 > dist.sha256
+          node <<'NODE' > dist.sha256
+          const fs = require(fs);
+          const path = require(path);
+          const crypto = require(crypto);
+
+          function walk(dir) {
+            const out = [];
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.posix.join(dir, entry.name);
+              if (entry.isDirectory()) out.push(...walk(full));
+              else if (entry.isFile()) out.push(full);
+            }
+            return out;
+          }
+
+          for (const file of walk(dist).sort()) {
+            const hex = crypto.createHash(sha256).update(fs.readFileSync(file)).digest(hex);
+            process.stdout.write(`${hex}  ${file}\n`);
+          }
+          NODE
 
       - name: Upload dist hash
         uses: actions/upload-artifact@v4
