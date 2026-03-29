@@ -1,6 +1,11 @@
 # SIGILLARIUM
 
 ![License](https://img.shields.io/badge/license-Apache--2.0-blue)
+![Role](https://img.shields.io/badge/role-seal%20archive%20surface-111111)
+![Identity](https://github.com/Verifrax/SIGILLARIUM/actions/workflows/identity.yml/badge.svg?branch=main)
+![Determinism](https://github.com/Verifrax/SIGILLARIUM/actions/workflows/determinism-check.yml/badge.svg?branch=main)
+![Deploy](https://github.com/Verifrax/SIGILLARIUM/actions/workflows/pages.yml/badge.svg?branch=main)
+![Host](https://img.shields.io/badge/host-sigillarium.verifrax.net-1f6feb)
 
 Deterministic seal and archive reference surface for the Verifrax perimeter.
 
@@ -8,7 +13,6 @@ Deterministic seal and archive reference surface for the Verifrax perimeter.
 
 * Repository role: seal and archive reference surface only
 * Public host ownership: `sigillarium.verifrax.net`
-* npm package: `@verifrax/sigillarium`
 * Repository class: public-facing reference and archive boundary
 * Stack position: seal/archive layer adjacent to proof, verification, and evidence
 * Artifact-chain relevance: may reference chain material, but is not the evidence root of record
@@ -312,7 +316,6 @@ This README should stay aligned with:
 
 No README line here should outrun those sources.
 
-
 ## Verifrax system path labels
 
 The governed Verifrax path that this README must stay compatible with is:
@@ -344,7 +347,6 @@ The live host-label map that must remain explicit and non-contradictory is:
 * `https://docs.verifrax.net/` — documentation surface
 
 This README must remain compatible with `artifact-0005` as the load-bearing authority → execution → verification → evidence boundary without claiming that this repository alone authors, proves, seals, or registers `artifact-0005` unless that role is actually true for this repository.
-
 
 ## Security
 
