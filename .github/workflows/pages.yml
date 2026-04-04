@@ -32,9 +32,11 @@ jobs:
           mkdir -p dist/seals
           cp CNAME dist/CNAME
           cp public/index.html dist/index.html
+          cp public/404.html dist/404.html
           cp public/seals/index.html dist/seals/index.html
           cp -R surface-system dist/surface-system
           test -f dist/index.html
+          test -f dist/404.html
           test -f dist/seals/index.html
           test -f dist/surface-system/shell/base.css
           grep -Fx "sigillarium.verifrax.net" dist/CNAME
