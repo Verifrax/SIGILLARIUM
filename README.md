@@ -16,7 +16,7 @@ Deterministic seal and archive reference surface for the Verifrax perimeter.
 * Repository class: public-facing reference and archive boundary
 * Stack position: seal/archive layer adjacent to proof, verification, and evidence
 * Artifact-chain relevance: may reference chain material, but is not the evidence root of record
-* Package surface: monorepo package surfaces may exist here, but package publication claims must follow repository metadata and releases, not README inflation
+* Package surface: public npm package `@verifrax/sigillarium@0.1.0` is published from `packages/cli`; root monorepo metadata must not outrank that package boundary
 * License: Apache License Version 2.0
 
 ## One-sentence role
