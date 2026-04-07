@@ -1,5 +1,5 @@
 {
-  "name": "sigillarium",
+  "name": "@verifrax/sigillarium",
   "private": true,
   "version": "0.0.0",
   "workspaces": [
@@ -16,5 +16,6 @@
   "devDependencies": {
     "@types/node": "^22.19.13",
     "typescript": "^5.9.3"
-  }
+  },
+  "license": "Apache-2.0"
 }
