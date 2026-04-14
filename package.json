@@ -1,6 +1,6 @@
 {
-  "name": "sigillarium",
-  "private": true,
+  "name": "@verifrax/sigillarium",
+  "private": false,
   "version": "0.0.0",
   "workspaces": [
     "packages/*"
@@ -16,5 +16,17 @@
   "devDependencies": {
     "@types/node": "^22.19.13",
     "typescript": "^5.9.3"
+  },
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Verifrax/SIGILLARIUM.git"
+  },
+  "homepage": "https://github.com/Verifrax/SIGILLARIUM#readme",
+  "bugs": {
+    "url": "https://github.com/Verifrax/SIGILLARIUM/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

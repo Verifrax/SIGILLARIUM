@@ -1,5 +1,8 @@
 # SIGILLARIUM
 
+Package: @verifrax/sigillarium
+Repository: Verifrax/SIGILLARIUM
+
 SIGILLARIUM is the Verifrax seal-archive and reference boundary: the public surface that preserves archive/reference access to sealed materials and related archive indices without becoming constitutional law, canonical world-state, reconciliation, sovereign cognition, authority issuance, governed execution, verification, proof publication, or intake.
 
 ## Proof artifacts
