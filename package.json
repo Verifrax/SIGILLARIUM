@@ -20,7 +20,7 @@
   "license": "Apache-2.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Verifrax/SIGILLARIUM.git"
+    "url": "git+https://github.com/Verifrax/SIGILLARIUM.git"
   },
   "homepage": "https://github.com/Verifrax/SIGILLARIUM#readme",
   "bugs": {
