@@ -32,7 +32,7 @@ This repository is part of the VERIFRAX proof perimeter.
 * Public host ownership: `sigillarium.verifrax.net`
 * Package status: repository only
 * Current repository posture: public archive-reference surface
-* License: Apache License Version 2.0
+* License: Mozilla Public License 2.0
 
 ## Boundary
 
@@ -175,4 +175,5 @@ SIGILLARIUM is not intake.
 
 ## License
 
-Apache License Version 2.0
+This repository is licensed under the Mozilla Public License 2.0. See `LICENSE`.
+
