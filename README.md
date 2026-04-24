@@ -1,5 +1,7 @@
 # SIGILLARIUM
 
+* License: GNU General Public License v3.0
+
 Package: @verifrax/sigillarium
 Repository: Verifrax/SIGILLARIUM
 
@@ -175,5 +177,4 @@ SIGILLARIUM is not intake.
 
 ## License
 
-This repository is licensed under the Mozilla Public License 2.0. See `LICENSE`.
-
+This repository is licensed under the GNU General Public License v3.0. See `LICENSE`.
