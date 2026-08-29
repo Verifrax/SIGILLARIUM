@@ -5,18 +5,21 @@ on:
     branches: [ main ]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   core-determinism:
-    name: core-hash (${ { matrix.os } })
+    name: core-hash (${{ matrix.os }})
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: "20"
           cache: "npm"
@@ -33,29 +36,28 @@ jobs:
           set -euo pipefail
           cd packages/core
           node <<'NODE' > dist.sha256
-const fs = require(fs);
-const path = require(path);
-const crypto = require(crypto);
+          const fs = require('fs');
+          const path = require('path');
+          const crypto = require('crypto');
 
-function walk(dir) {
-  const out = [];
-  for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
-    const full = path.posix.join(dir, entry.name);
-    if (entry.isDirectory()) out.push(...walk(full));
-    else if (entry.isFile()) out.push(full);
-  }
-  return out;
-}
+          function walk(dir) {
+            const out = [];
+            for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+              const full = path.posix.join(dir, entry.name);
+              if (entry.isDirectory()) out.push(...walk(full));
+              else if (entry.isFile()) out.push(full);
+            }
+            return out;
+          }
 
-for (const file of walk(dist).sort()) {
-  const hex = crypto.createHash(sha256).update(fs.readFileSync(file)).digest(hex);
-  process.stdout.write(`${hex}  ${file}
-`);
-}
+          for (const file of walk('dist').sort()) {
+            const hex = crypto.createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+            process.stdout.write(`${hex}  ${file}\n`);
+          }
           NODE
 
       - name: Upload dist hash
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
           name: core-dist-sha256-${{ matrix.os }}
           path: packages/core/dist.sha256
@@ -65,7 +67,7 @@ for (const file of walk(dist).sort()) {
     needs: [core-determinism]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@d3f86a106a0bac45b974a628896c90dbdf5c8093
         with:
           path: artifacts
 
